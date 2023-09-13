@@ -8,7 +8,6 @@ function callbackFunction(event) {
     
     myFormData.forEach((value, key) => (formDataObj[key] = value));
     console.log(formDataObj);
-
 };
 
 const firstName=formDataObj.fname;
@@ -17,9 +16,14 @@ const phoneNum=formDataObj.ph;
 const emailAddress=formDataObj.email;
 const nameOfCompany=formDataObj.company;
 const titlePosition=formDataObj.position;
-const emptyP=document.getElementById("letter");
-const genCover=document.getElementById("coverbtn");
+//const emptyP=document.getElementById("letter");
+//const genCover=document.getElementById("coverbtn");
 
-const coverLetter=()=>{
-    return `${firstName} ${lastName} | ${phoneNum} | ${emailAddress}`
+const headerTop=()=>{
+    return `${firstName} ${lastName} | ${phoneNum} | ${emailAddress} <br><br> To hiring manager, <br><br> I hope this finds you well.`
+ }
+
+ const coverLetter=()=>{
+return headerTop();
+
  }
