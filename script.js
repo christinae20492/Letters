@@ -1,29 +1,25 @@
+let emptyParagraph=document.getElementById("letter");
 
-const form = document.querySelector('form');
+const coverButton=document.getElementsByName("coverbtn");
+const form = document.getElementById('base');
 const formDataObj = {};
-form.addEventListener('submit', callbackFunction);
-function callbackFunction(event) {
+let savedData=[];
+function callbackFunction(_event) {
+    form.addEventListener('submit', callbackFunction);
+
     event.preventDefault();
-    const myFormData = new FormData(event.target);
-    
+    const myFormData = new FormData(form);
     myFormData.forEach((value, key) => (formDataObj[key] = value));
-    console.log(formDataObj);
+    savedData=Object.values(formDataObj);
 };
 
-const firstName=formDataObj.fname;
-const lastName=formDataObj.lname;
-const phoneNum=formDataObj.ph;
-const emailAddress=formDataObj.email;
-const nameOfCompany=formDataObj.company;
-const titlePosition=formDataObj.position;
-//const emptyP=document.getElementById("letter");
-//const genCover=document.getElementById("coverbtn");
-
-const headerTop=()=>{
-    return `${firstName} ${lastName} | ${phoneNum} | ${emailAddress} <br><br> To hiring manager, <br><br> I hope this finds you well.`
+const letterHeader=()=>{
+    callbackFunction();
+    return savedData[0]+" "+savedData[1]+" | "+savedData[2]+
+    " | "+savedData[3]+"<br><br> To hiring manager, <br><br> I hope this finds you well."
  }
 
  const coverLetter=()=>{
-return headerTop();
-
- }
+return emptyParagraph.innerHTML=`${letterHeader()}`
+}
+ 
